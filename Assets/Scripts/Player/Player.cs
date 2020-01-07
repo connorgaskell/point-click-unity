@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public LayerMask groundLayer;
+    public bool tileMovement = false;
+    public float tileSize = 2.5f;
 
     Camera cam;
     PlayerNavigation nav;
@@ -20,7 +22,11 @@ public class Player : MonoBehaviour {
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit, 100, groundLayer)) {
-                nav.MoveTo(hit.point);
+                if(tileMovement) {
+                    nav.MoveTo(new Vector3(Mathf.Round(hit.point.x / tileSize) * tileSize, hit.point.y, Mathf.Round(hit.point.z / tileSize) * tileSize));
+                } else {
+                    nav.MoveTo(hit.point);
+                }
             }
         }
 

@@ -511,6 +511,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  tileMovement: 1
+  tileSize: 2
 --- !u!114 &550058069
 MonoBehaviour:
   m_ObjectHideFlags: 0
